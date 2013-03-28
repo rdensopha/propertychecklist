@@ -15,6 +15,9 @@
   <div class="actions">
     <%= f.input :name %>
     <%= f.association :parentCategory, as: :radio_buttons, item_wrapper_class: 'inline' %>
+    <% if action_name == 'edit' %>
+         <%= f.input :status, collection: %w{Active Inactive}, as: :radio_buttons, item_wrapper_class: 'inline' %>
+    <% end %>
     <%= f.button :submit %>
   </div>
 <% end %>

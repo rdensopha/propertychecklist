@@ -1,4 +1,7 @@
 Propertychecklist::Application.routes.draw do
+  resources :questions
+
+
   resources :categories
 
 
