@@ -18,10 +18,21 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'bootstrap-sass','~>2.3.0.1'
 end
 
 gem 'jquery-rails'
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+
+end
+
+  gem 'simple_form'
+
+  gem 'rb-readline'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -5,4 +5,8 @@ class Category < ActiveRecord::Base
   attr_accessible :name, :status
   has_many :subcategories, class_name: 'Category', foreign_key: 'parentCategory_id'
   belongs_to :parentCategory, class_name: 'Category'
+
+  #validations for category object
+  validates :name, presence: true
+
 end
