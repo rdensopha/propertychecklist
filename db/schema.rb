@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130328155616) do
+ActiveRecord::Schema.define(:version => 20130329102840) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -21,11 +21,42 @@ ActiveRecord::Schema.define(:version => 20130328155616) do
     t.datetime "updated_at",        :null => false
   end
 
+  create_table "project_checklist_responses", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.string   "status"
+    t.integer  "responseValue"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "status"
+  end
+
   create_table "questions", :force => true do |t|
     t.text     "questionContent"
     t.string   "answerType"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "status"
+    t.integer  "category_id"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "providerName"
+    t.string   "identifier"
+    t.string   "verifiedEmail"
+    t.string   "prefferedUserName"
+    t.string   "displayName"
+    t.string   "status"
+    t.string   "mobileNumber"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
 end

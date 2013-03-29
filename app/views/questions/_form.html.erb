@@ -4,6 +4,7 @@
   <div class="form-inputs">
     <%= f.input :questionContent %>
     <%= f.input :answerType %>
+    <%= f.association :category, as: :radio_buttons, item_wrapper_class: 'inline'%>
   </div>
 
   <div class="form-actions">
