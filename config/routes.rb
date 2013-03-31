@@ -1,4 +1,6 @@
 Propertychecklist::Application.routes.draw do
+  post "authentication/loginuser"
+  match 'authentication/logout' => 'authentication#logout'
   resources :users
 
 
