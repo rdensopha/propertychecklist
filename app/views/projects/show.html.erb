@@ -1,10 +1,27 @@
 <p id="notice"><%= notice %></p>
-
+<% content_for :project_details do %>
 <p>
   <b>Name:</b>
   <%= @project.name %>
 </p>
+<% end %>
+<% content_for :project_developer_detail  do%>
+    <p>
+      <b>Project Developer:</b>
+      <%= @project.project_developer.name %>
+    </p>
+<% end %>
+<% content_for :checklist_category  do%>
+     <ul class="nav nav-list checklist-category-sidenav " data-offset-top="290" data-spy="affix">
+         <%@master_categories.each do |master_category| %>
+            <li>
+               <a href="#<%= master_category.name%>"><i class="icon-chevron-right"></i><%= master_category.name%></a>
+            </li>
+         <% end %>
+     </ul>
+<% end %>
+<% content_for :project_checklist_user do %>
+    <%@master_categories  %>
+<% end %>
 
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>

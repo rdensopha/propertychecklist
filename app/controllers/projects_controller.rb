@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  layout 'project_detail', :only =>  [:show]
   # GET /projects
   # GET /projects.json
   def index
@@ -14,7 +15,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-
+    @master_categories = Category.all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }

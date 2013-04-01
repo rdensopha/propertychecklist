@@ -33,8 +33,9 @@
           s.parentNode.insertBefore(e, s);
       })();
   </script>
+
 </head>
-<body>
+<body data-spy="scroll" data-target=".checklist-category-sidebar">
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
@@ -47,8 +48,8 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
           <% if !session[:current_user_id].nil? %>
-               <li> <%= link_to "Logout", {controller: "authentication", action: "logout" } %></li>
-           <% end %>
+              <li> <%= link_to "Logout", {controller: "authentication", action: "logout" } %></li>
+          <% end %>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -56,17 +57,33 @@
 </div>
 
 <div class="container">
-    <div class="row">
-      <div class="span8">
-        <%= yield %>
-      </div>
-      <div class="span4">
-        <% if session[:current_user_id].nil? %>
-            <h4>Login</h4>
-            <div id="janrainEngageEmbed"></div>
-        <% end %>
-      </div>
+  <div class="row">
+    <div class="span4">
+     <div class="well well-large">
+      <h4>Project Details</h4>
+      <%= yield  :project_details %>
+     </div>
     </div>
+    <div class="span4">
+     <div class="well well-large">
+      <h4>Project Developer Details</h4>
+      <%= yield  :project_developer_detail %>
+     </div>
+    </div>
+    <div class="span4">
+      <% if session[:current_user_id].nil? %>
+          <div id="janrainEngageEmbed"></div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+        <div class="span3 checklist-category-sidebar">
+          <%= yield :checklist_category %>
+        </div>
+        <div class="span9">
+            <%= yield :project_checklist_user %>
+        </div>
+  </div>
 </div>
 
 
