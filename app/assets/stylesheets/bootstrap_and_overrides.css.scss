@@ -1,3 +1,6 @@
+.checklist-category-sidenav > .active > a:focus {
+  background-color: #0088cc;
+}
 @import 'bootstrap';
 @import 'bootstrap-responsive';
 body {padding-top: 50px;}

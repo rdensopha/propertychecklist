@@ -12,7 +12,7 @@
     </p>
 <% end %>
 <% content_for :checklist_category  do%>
-     <ul class="nav nav-list checklist-category-sidenav " data-offset-top="290" data-spy="affix">
+     <ul class="nav nav-list checklist-category-sidenav  affix-top" data-offset-top="210" data-spy="affix" data-offset-bottom="20">
          <%@master_categories.each do |master_category| %>
             <li>
                <a href="#<%= master_category.name%>"><i class="icon-chevron-right"></i><%= master_category.name%></a>
@@ -21,7 +21,16 @@
      </ul>
 <% end %>
 <% content_for :project_checklist_user do %>
-    <%@master_categories  %>
+    <%@master_categories.each do |master_category|  %>
+        <section id="<%= master_category.name%>">
+           <div class="page-header">
+              <h2><%= master_category.name %></h2>
+              <%master_category.questions.each do |checklist_question|  %>
+                  <p><%= checklist_question.questionContent %></p>
+               <% end %>
+           </div>
+        </section>
+    <% end %>
 <% end %>
 
 
