@@ -82,4 +82,14 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+  def project_checklist_response_user_question(question_id)
+        question = ProjectChecklistResponse.response_project_user_question(@project.id, session[:current_user_id], question_id).first
+        question.responseValue unless question.nil?
+  end
+
+  #helper methods
+  helper_method :project_checklist_response_user_question
+
 end

@@ -4,7 +4,7 @@ class ProjectChecklistResponsesController < ApplicationController
         question_id = params[:question_id]
         answer_value = params[:answer_id]
         user_id = session[:current_user_id]
-       project_checklist_response = ProjectChecklistResponse.where(project_id: project_id, question_id: question_id, user_id: user_id).first
+       project_checklist_response = ProjectChecklistResponse.response_project_user_question(project_id, user_id,question_id).first
        if project_checklist_response.nil?
          project_checklist_response = ProjectChecklistResponse.new
          project_checklist_response.project_id= project_id
