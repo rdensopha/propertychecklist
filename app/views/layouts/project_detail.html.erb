@@ -33,10 +33,17 @@
           s.parentNode.insertBefore(e, s);
       })();
   </script>
-
+  <script type="text/javascript">
+      $(document).ready(function(){
+             $('input[type=submit]').css('display','none');
+            $('input[type=radio]').click(function(){
+                this.parentElement.parentElement.lastElementChild.click();
+            });
+       });
+  </script>
 </head>
 <body >
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-static-top">
   <div class="navbar-inner">
     <div class="container">
       <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -56,7 +63,7 @@
   </div>
 </div>
 
-<div class="container" data-spy="scroll" data-target=".checklist-category-sidebar">
+<div class="container" >
   <div class="row">
     <div class="span4">
      <div class="well well-large">
@@ -76,13 +83,20 @@
       <% end %>
     </div>
   </div>
-  <div class="row">
-        <div class="span3 checklist-category-sidebar">
-          <%= yield :checklist_category %>
+  <hr> <!-- the horizontal divider -->
+  <div class="navbar navbar-static"  data-spy="affix-top"  id="checklist_category_navbar">
+     <div class="navbar-inner">
+        <div class="container" style="width: auto;">
+           <ul class="nav">
+             <%= yield :checklist_category %>
+           </ul>
         </div>
-        <div class="span9">
-            <%= yield :project_checklist_user %>
-        </div>
+     </div>
+  </div>
+  <div class="row" data-spy="scroll" data-target="#checklist_category_navbar" id="checklist_content">
+    <div class="span12">
+      <%= yield :project_checklist_user %>
+    </div>
   </div>
 </div>
 

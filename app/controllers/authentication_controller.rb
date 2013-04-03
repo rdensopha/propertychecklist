@@ -9,21 +9,6 @@ class AuthenticationController < ApplicationController
     respond_to do |format|
       format.html {redirect_to projects_path}
     end
-=begin
-    user_loggedin = User.where(providerName: identity_provider,identifier: identifier_value).first_or_create(
-        providerName: identity_provider,
-        identifier: identifier_value,
-        verifiedEmail: user_info.fetch("profile").fetch("verifiedEmail"),
-        prefferedUserName: user_info.fetch("profile").fetch("preferredUsername"),
-        displayName: user_info.fetch("profile").fetch("displayName"),
-        status: 'Active',
-        mobileNumber: nil)
-
-    session[:current_user_id] = user_loggedin.id # saving id in session
-    respond_to do |format|
-      format.html {redirect_to projects_path}
-    end
-=end
   end
 
   def logout

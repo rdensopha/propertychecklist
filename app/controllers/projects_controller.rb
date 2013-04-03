@@ -15,7 +15,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-    @master_categories = Category.all
+    @master_categories = Category.where parentCategory_id: nil
+    @answers_labels = ['Yes' , 'No' , 'I have not yet verified']
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
