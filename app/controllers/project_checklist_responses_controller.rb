@@ -2,7 +2,8 @@ class ProjectChecklistResponsesController < ApplicationController
   def update_response
         project_id = params[:project_id]
         question_id = params[:question_id]
-        answer_value = params[:answer_id]
+       key_val = params.keys.grep(/answer/).first
+        answer_value = params[key_val]
         user_id = session[:current_user_id]
        project_checklist_response = ProjectChecklistResponse.response_project_user_question(project_id, user_id,question_id).first
        if project_checklist_response.nil?

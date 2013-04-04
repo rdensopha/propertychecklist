@@ -89,7 +89,11 @@ class ProjectsController < ApplicationController
         question.responseValue unless question.nil?
   end
 
+  def return_answer_id(question_id)
+        "answer_id_" + question_id.to_s
+  end
+
   #helper methods
-  helper_method :project_checklist_response_user_question
+  helper_method :project_checklist_response_user_question, :return_answer_id
 
 end

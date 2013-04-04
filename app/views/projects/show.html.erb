@@ -32,9 +32,9 @@
 
                             <%@answers_labels.each do |answer_label| %>
                                     <% if project_checklist_response_user_question(checklist_question.id) == @answers_labels.find_index(answer_label) %>
-                                          <label class="radio inline"><%= radio_button_tag 'answer_id', @answers_labels.find_index(answer_label), true %><%= answer_label %></label>
+                                          <label class="radio inline"><%= radio_button_tag return_answer_id(checklist_question.id), @answers_labels.find_index(answer_label), true %><%= answer_label %></label>
                                     <% else %>
-                                          <label class="radio inline"><%= radio_button_tag 'answer_id', @answers_labels.find_index(answer_label) %><%= answer_label %></label>
+                                          <label class="radio inline"><%= radio_button_tag return_answer_id(checklist_question.id), @answers_labels.find_index(answer_label) %><%= answer_label %></label>
                                     <% end %>
                             <% end %>
                             <%= submit_tag 'Submit' %>
