@@ -1,4 +1,7 @@
 Propertychecklist::Application.routes.draw do
+  resources :question_labels
+
+
   post "authentication/loginuser"
   match 'authentication/logout' => 'authentication#logout'
   match 'project_checklist_responses', to: 'projectChecklistResponses#update_response', via: [:post]

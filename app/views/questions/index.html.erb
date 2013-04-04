@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Questioncontent</th>
-    <th></th>
+    <th>Category name</th>
     <th></th>
     <th></th>
   </tr>
@@ -11,9 +11,9 @@
 <% @questions.each do |question| %>
   <tr>
     <td><%= question.questionContent %></td>
-    <td><%= link_to 'Show', question %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
-    <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= question.category.name %></td>
+    <td><%= link_to 'Edit', edit_question_path(question), class: "btn btn-small" %></td>
+    <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-small" %></td>
   </tr>
 <% end %>
 </table>

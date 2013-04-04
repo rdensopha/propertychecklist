@@ -24,7 +24,12 @@
            <div class="page-header">
               <h2><%= master_category.name %></h2>
               <%master_category.questions.each do |checklist_question|  %>
-                  <p><%= checklist_question.questionContent %></p>
+                  <p>
+                      <%= checklist_question.questionContent %>
+                      <%  unless checklist_question.question_labels.first.nil?%>
+                             <span class="label <%= return_question_label(checklist_question)%>"><%= checklist_question.question_labels.first.name  %></span>
+                      <% end %>
+                  </p>
 
                         <%= form_tag('/project_checklist_responses', method: :post, remote: true) do %>
                            <%= hidden_field_tag 'project_id', @project.id %>

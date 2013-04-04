@@ -93,7 +93,18 @@ class ProjectsController < ApplicationController
         "answer_id_" + question_id.to_s
   end
 
+  def return_question_label(question)
+    label_string = nil
+      unless question.question_labels.first.nil?
+        if question.question_labels.first.name.upcase == "Important".upcase
+            label_string = "label-warning"
+        elsif question.question_labels.first.name.upcase == "Critical".upcase
+            label_string = "label-important"
+        end
+      end
+    label_string
+  end
   #helper methods
-  helper_method :project_checklist_response_user_question, :return_answer_id
+  helper_method :project_checklist_response_user_question, :return_answer_id, :return_question_label
 
 end

@@ -1,0 +1,2 @@
+module QuestionLabelsHelper
+end

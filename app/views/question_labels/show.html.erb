@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @question_label.name %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @question_label.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_question_label_path(@question_label) %> |
+<%= link_to 'Back', question_labels_path %>
