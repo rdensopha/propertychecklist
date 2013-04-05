@@ -104,7 +104,15 @@ class ProjectsController < ApplicationController
       end
     label_string
   end
+
+  def checklist_question_info_display(question)
+    question_info_string = nil
+    unless question.question_info.nil?
+      question_info_string = question.question_info.sub(question.question_info_emphasis, "\"<strong>"<<question.question_info_emphasis<<"</strong>\"")
+    end
+    question_info_string
+  end
   #helper methods
-  helper_method :project_checklist_response_user_question, :return_answer_id, :return_question_label
+  helper_method :project_checklist_response_user_question, :return_answer_id, :return_question_label, :checklist_question_info_display
 
 end

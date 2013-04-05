@@ -30,6 +30,9 @@
                              <span class="label <%= return_question_label(checklist_question)%>"><%= checklist_question.question_labels.first.name  %></span>
                       <% end %>
                   </p>
+                 <% unless checklist_question.question_info.nil? %>
+                      <div class="alert alert-error"><strong>Note!</strong><%=  checklist_question.question_info%></div>
+                 <% end %>
 
                         <%= form_tag('/project_checklist_responses', method: :post, remote: true) do %>
                            <%= hidden_field_tag 'project_id', @project.id %>
@@ -44,7 +47,7 @@
                             <% end %>
                             <%= submit_tag 'Submit' %>
                         <% end %>
-
+                        <hr>
 
                <% end %>
            </div>

@@ -6,6 +6,8 @@
     <%= f.input :answerType %>
     <%= f.association :category, as: :radio_buttons, item_wrapper_class: 'inline'%>
     <%= f.association :question_labels, as: :check_boxes, item_wrapper: 'inline' %>
+    <%= f.input :question_info %>
+    <%= f.input :question_info_emphasis %>
   </div>
 
   <div class="form-actions">
