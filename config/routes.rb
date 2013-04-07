@@ -1,4 +1,7 @@
 Propertychecklist::Application.routes.draw do
+  resources :cities
+
+
   resources :question_labels
 
 
