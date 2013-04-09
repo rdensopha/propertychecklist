@@ -37,7 +37,11 @@
       $(document).ready(function(){
              $('input[type=submit]').css('display','none');
             $('input[type=radio]').click(function(){
+              <% if session[:current_user_id].nil?  %>
+                $("#modalLogin").modal('show');
+              <% else %>
                 this.parentElement.parentElement.parentElement.lastElementChild.click();
+              <% end %>
             });
        });
       /*  for iCheck feature */
@@ -85,7 +89,7 @@
      </div>
     </div>
     <div class="span4">
-      <a href="#modalLogin" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+
     </div>
   </div>
   <hr> <!-- the horizontal divider -->
@@ -105,6 +109,9 @@
   </div>
 </div>
 <div id="modalLogin" class="modal hide fade">
+  <div class="modal-header">
+    <h5>Please login and then give your responses, otherwise they will <strong>NOT</strong>&nbsp;be saved</h5>
+  </div>
    <div class="modal-body">
      <% if session[:current_user_id].nil? %>
          <div id="janrainEngageEmbed"></div>
