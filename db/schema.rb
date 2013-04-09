@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407063402) do
+ActiveRecord::Schema.define(:version => 20130409104346) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -53,7 +53,10 @@ ActiveRecord::Schema.define(:version => 20130407063402) do
     t.string   "projectType"
     t.string   "projectLocation"
     t.integer  "city_id"
+    t.string   "slug"
   end
+
+  add_index "projects", ["slug"], :name => "index_projects_on_slug"
 
   create_table "question_labels", :force => true do |t|
     t.string   "name"
