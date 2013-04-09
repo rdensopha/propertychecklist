@@ -85,9 +85,7 @@
      </div>
     </div>
     <div class="span4">
-      <% if session[:current_user_id].nil? %>
-          <div id="janrainEngageEmbed"></div>
-      <% end %>
+      <a href="#modalLogin" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
     </div>
   </div>
   <hr> <!-- the horizontal divider -->
@@ -106,7 +104,16 @@
     </div>
   </div>
 </div>
-
+<div id="modalLogin" class="modal hide fade">
+   <div class="modal-body">
+     <% if session[:current_user_id].nil? %>
+         <div id="janrainEngageEmbed"></div>
+     <% end %>
+   </div>
+   <div class="modal-footer">
+      <button class="btn" data-dismiss="modal">Close</button>
+   </div>
+</div>
 
 </body>
 </html>
