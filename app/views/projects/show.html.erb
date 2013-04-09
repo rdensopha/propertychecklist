@@ -25,13 +25,13 @@
               <h2><%= master_category.name %></h2>
               <%master_category.questions.each do |checklist_question|  %>
                   <p>
-                      <%= checklist_question.questionContent %>
+                      <%= simple_format(checklist_question.questionContent) %>
                       <%  unless checklist_question.question_labels.first.nil?%>
                              <span class="label <%= return_question_label(checklist_question)%>"><%= checklist_question.question_labels.first.name  %></span>
                       <% end %>
                   </p>
-                 <% unless checklist_question.question_info.nil? %>
-                      <div class="alert alert-error"><strong>Note!</strong><%=  checklist_question.question_info%></div>
+                 <% unless checklist_question.question_info.blank? %>
+                      <div class="alert alert-error"><%=  highlight(checklist_question.question_info,checklist_question.question_info_emphasis)%></div>
                  <% end %>
 
                         <%= form_tag('/project_checklist_responses', method: :post, remote: true) do %>
@@ -47,9 +47,11 @@
                             <% end %>
                             <%= submit_tag 'Submit' %>
                         <% end %>
-                        <% (0..2).each do |response_code| %>
-                          <span style="font-size:20px;" class="text-error"><%= response_count_for_question(@project.id, checklist_question.id, response_code) %></span> said <%= @answers_labels[response_code] %>,&nbsp;
-                        <% end %>
+                         <a href="#" data-toggle="popover"    data-trigger="hover" data-content="Responses of members registered  for this project" data-original-title="A title">
+                                <% (0..2).each do |response_code| %>
+                                   <span style="font-size:20px;" class="text-error"><%= response_count_for_question(@project.id, checklist_question.id, response_code) %></span> said <%= @answers_labels[response_code] %>,&nbsp;
+                                <% end %>
+                         </a>
                         <hr>
 
                <% end %>
