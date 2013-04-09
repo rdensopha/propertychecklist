@@ -47,6 +47,9 @@
                             <% end %>
                             <%= submit_tag 'Submit' %>
                         <% end %>
+                        <% (0..2).each do |response_code| %>
+                          <span style="font-size:20px;" class="text-error"><%= response_count_for_question(@project.id, checklist_question.id, response_code) %></span> said <%= @answers_labels[response_code] %>,&nbsp;
+                        <% end %>
                         <hr>
 
                <% end %>

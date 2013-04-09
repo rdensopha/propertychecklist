@@ -112,7 +112,12 @@ class ProjectsController < ApplicationController
     end
     question_info_string
   end
+
+  def response_count_for_question(project_num, question_num, response_value)
+    ProjectChecklistResponse.response_project_question_count(project_num, question_num, response_value)
+    #ProjectChecklistResponse. where(project_id: project_num, question_id: question_num, responseValue: response_value).count
+  end
   #helper methods
-  helper_method :project_checklist_response_user_question, :return_answer_id, :return_question_label, :checklist_question_info_display
+  helper_method :project_checklist_response_user_question, :return_answer_id, :return_question_label, :checklist_question_info_display, :response_count_for_question
 
 end
