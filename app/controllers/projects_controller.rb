@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   layout 'project_detail', :only =>  [:show]
+  load_and_authorize_resource
   # GET /projects
   # GET /projects.json
   def index

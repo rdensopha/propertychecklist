@@ -32,6 +32,9 @@ class AuthenticationController < ApplicationController
             displayName: user_info.fetch("profile").fetch("displayName"),
             status: 'Active',
             mobileNumber: nil)
-
+        if !(user_loggedin.has_role?(:projectMember)||user_loggedin.has_role?(:admin))
+              user_loggedin.add_role :projectMember
+        end
+        user_loggedin
   end
 end
