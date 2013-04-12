@@ -58,5 +58,8 @@ module Propertychecklist
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    #Added to prevent the #could not connect to server: Connection refused (0x0000274D/10061) error
+    config.assets.initialize_on_precompile = false
   end
 end
