@@ -4,7 +4,7 @@ class AuthenticationController < ApplicationController
   base_uri "rpxnow.com/api/v2/auth_info"
   def loginuser
     id_token = params[:token]
-    response = self.class.get("", query: {apiKey: '05ba9498635b1de3a2a7485954e128de1572b2d8', token: id_token})
+    response = self.class.get("", query: {apiKey: ENV["JANRAIN_KEY"], token: id_token})
     session[:current_user_id] = process_user_info response.parsed_response if response.code == 200
     respond_to do |format|
       format.html {redirect_to projects_path}
