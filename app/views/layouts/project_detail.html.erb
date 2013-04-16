@@ -31,9 +31,12 @@
 
           var s = document.getElementsByTagName('script')[0];
           s.parentNode.insertBefore(e, s);
+
+
       })();
   </script>
   <script type="text/javascript">
+
       $(document).ready(function(){
              $('input[type=submit]').css('display','none');
             $('input[type=radio]').click(function(){
@@ -43,14 +46,20 @@
                 this.parentElement.parentElement.parentElement.lastElementChild.click();
               <% end %>
             });
-       });
-      /*  for iCheck feature */
-      $(document).ready(function(){
+
+          $("#projectSearchField").swiftypeSearch({
+              engineKey: 'xjvyNV8YyuiDWevYpMcN',
+              resultContainingElement: '#projects-results-container'
+          });
+
           $('input').iCheck({
               checkboxClass: 'icheckbox_flat-red',
               radioClass: 'iradio_flat-red'
           });
-      });
+
+       });
+      /*  for iCheck feature */
+
   </script>
 </head>
 <body >
@@ -89,7 +98,9 @@
      </div>
     </div>
     <div class="span4">
-
+       <div class="well well-large">
+         <%= yield :project_search %>
+       </div>
     </div>
   </div>
   <hr> <!-- the horizontal divider -->
