@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require jquery.ba-hashchange.min
-//= require jquery.icheck
 //= require jquery.swiftype.search
+//= require jquery.icheck
+
 

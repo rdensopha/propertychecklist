@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PropertyChecklist</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+  <style type="text/css">
+  body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  font-size: 16px;
+  }
+  p{
+  font-size:  14px;
+  font-weight: 200;
+  }
+  li{
+      font-family: 'Noto Sans', sans-serif;
+  }
+  </style>
+  <script type="text/javascript">
+
+      /*===================================================================================*/
+
+      $(document).ready(function() {
+          var customRenderFunction = function(document_type, item) {
+              var out = '<div class="st-result"><h3 class="title"><a href=" ' + item['ProjectUrl'] + ' " class="st-search-result-link">' + item['ProjectName'] + " by "+ item['ProjectDeveloper'] + " in " + item['ProjectCity']+ '</a>';
+              return out
+          };
+          $("#projectSearchField").swiftypeSearch({
+              renderFunction: customRenderFunction,
+              engineKey: 'xjvyNV8YyuiDWevYpMcN',
+              resultContainingElement: '#projects-results-container'
+          });
+      });
+  </script>
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="hero.html">PropertyChecklist.in</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <% if !session[:current_user_id].nil? %>
+              <li> <%= link_to "Logout", {controller: "authentication", action: "logout" } %></li>
+          <% end %>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Main hero unit for a primary marketing message or call to action -->
+  <div class="hero-unit">
+    <h4>Hello, Everybody !</h4>
+    <h4>We all know that buying property  is an extremely complex process in India, with<span class="label label-important"> no transparency at all.</span> End customers like you
+    who don't have time and complete knowledge are taken for a ride by builders/developers.This site seeks to provide the following services to you</h4>
+    <ul>
+      <li><h5>A "must verify" checklist to check before buying property</h5></li>
+      <li><h5>the checklist is shared among all buyers for a particular property, so you know what "other buyers" are saying about the property</h5></li>
+      <li><h5>Get to know other members who are buying the property, and collaborate with them, right from the start</h5></li>
+      <li><h5>Can demand for your rights as a group, better collaborate among yourselves </h5></li>
+    </ul>
+    <h4>It is very important to  collaborate among yourselves as a group, to clarify all the details, so go ahead</h4>
+  </div>
+  <div class="row">
+      <div class="span7">
+        <div class="well well-large">
+          <%= yield :project_search %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

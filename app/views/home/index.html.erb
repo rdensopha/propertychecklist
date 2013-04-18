@@ -1,0 +1,20 @@
+<% content_for :projects_listing do %>
+    <div class="row">
+         <div class="span2">
+           <ul>
+            <% listProjectAlphabetically("a").each do |project_info| %>
+              <li><%= link_to project_info.name, project_path(project_info)%></li>
+            <% end %>
+           </ul>
+         </div>
+    </div>
+<% end %>
+<% content_for :project_search do%>
+    <form>
+      <div class="input-append">
+        <input class="span2 st-search-input" id="projectSearchField" type="text" />
+        <button class="btn" type="button"> Search </button>
+      </div>
+    </form>
+    <div id="projects-results-container" class="st-result-listing"></div>
+<% end %>

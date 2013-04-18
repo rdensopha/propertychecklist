@@ -11,15 +11,7 @@
       <%= @project.project_developer.name %>
     </p>
 <% end %>
-<% content_for :project_search do%>
-<form>
-  <div class="input-append">
-     <input class="span2 st-search-input" id="projectSearchField" type="text" />
-     <button class="btn" type="button"> Search </button>
-  </div>
-</form>
-<div id="projects-results-container" class="st-result-listing"></div>
-<% end %>
+
 <% content_for :checklist_category  do%>
             <%@master_categories.each do |master_category| %>
                 <li>

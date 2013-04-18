@@ -10,7 +10,7 @@
           if (typeof window.janrain !== 'object') window.janrain = {};
           if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
 
-          janrain.settings.tokenUrl ='http://localhost:3000/authentication/loginuser';
+          janrain.settings.tokenUrl ='<%= ENV["AUTHENTICATION_LOGIN_URL"] %>';
 
           function isReady() { janrain.ready = true; };
           if (document.addEventListener) {
@@ -34,7 +34,9 @@
 
 
       })();
+
   </script>
+
   <script type="text/javascript">
 
       $(document).ready(function(){
@@ -46,11 +48,6 @@
                 this.parentElement.parentElement.parentElement.lastElementChild.click();
               <% end %>
             });
-
-          $("#projectSearchField").swiftypeSearch({
-              engineKey: 'xjvyNV8YyuiDWevYpMcN',
-              resultContainingElement: '#projects-results-container'
-          });
 
           $('input').iCheck({
               checkboxClass: 'icheckbox_flat-red',
@@ -97,11 +94,7 @@
       <%= yield  :project_developer_detail %>
      </div>
     </div>
-    <div class="span4">
-       <div class="well well-large">
-         <%= yield :project_search %>
-       </div>
-    </div>
+
   </div>
   <hr> <!-- the horizontal divider -->
   <div class="navbar navbar-static"  data-spy="affix-top"  id="checklist_category_navbar">
