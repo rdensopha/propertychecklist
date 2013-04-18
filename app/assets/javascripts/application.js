@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require jquery.swiftype.search
 //= require jquery.icheck
 
 
