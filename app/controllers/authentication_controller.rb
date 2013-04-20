@@ -5,16 +5,16 @@ class AuthenticationController < ApplicationController
   def loginuser
     id_token = params[:token]
     response = self.class.get("", query: {apiKey: ENV["JANRAIN_KEY"], token: id_token})
-    session[:current_user_id] = process_user_info response.parsed_response if response.code == 200
+    session[:current_user_id] = (process_user_info response.parsed_response).id  if response.code == 200
     respond_to do |format|
-      format.html {redirect_to projects_path}
+      format.html {redirect_to root_path}
     end
   end
 
   def logout
     session.clear
     respond_to do |format|
-      format.html {redirect_to projects_path}
+      format.html {redirect_to root_path}
     end
   end
   private
