@@ -1,6 +1,7 @@
 class QuestionLabelsController < ApplicationController
   # GET /question_labels
   # GET /question_labels.json
+  load_and_authorize_resource
   def index
     @question_labels = QuestionLabel.all
 

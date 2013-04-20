@@ -1,6 +1,7 @@
 class ProjectDevelopersController < ApplicationController
   # GET /project_developers
   # GET /project_developers.json
+  load_and_authorize_resource
   def index
     @project_developers = ProjectDeveloper.all
 

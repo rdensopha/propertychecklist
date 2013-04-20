@@ -1,4 +1,5 @@
 class ProjectChecklistResponsesController < ApplicationController
+  load_and_authorize_resource
   def update_response
         project_id = params[:project_id]
         question_id = params[:question_id]

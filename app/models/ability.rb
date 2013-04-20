@@ -28,6 +28,11 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    # adding aliases to prevent every body from seeing all projects
+    clear_aliased_actions
+    alias_action :show, to: :read
+    alias_action :new, to: :create
+    alias_action :edit, to: :update
     can :manage, :all  if user.has_role? :admin
     can :update_checklist, ProjectChecklistResponse if user.has_role? :projectMember
     can :read, Project if user.has_role? :guest
