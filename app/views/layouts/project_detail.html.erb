@@ -56,8 +56,22 @@
 
        });
       /*  for iCheck feature */
+      $(function(){
+          $('#sub_nav').affix({
+              offset: $('#sub_nav').position()
+          });
 
+          $("#checklist_content").scrollspy();
+      });
   </script>
+  <style type="text/css">
+      #sub_nav.affix {
+          position: fixed;
+          top: 0;
+          width: 100%
+      }
+
+  </style>
 </head>
 <body >
 <div class="navbar navbar-inverse navbar-static-top">
@@ -96,17 +110,15 @@
     </div>
 
   </div>
-  <hr> <!-- the horizontal divider -->
-  <div class="navbar navbar-static"  data-spy="affix-top"  id="checklist_category_navbar">
-     <div class="navbar-inner">
-        <div class="container" style="width: auto;">
+
+  <div class="navbar" id="sub_nav">
+         <div class="navbar-inner">
            <ul class="nav">
              <%= yield :checklist_category %>
            </ul>
-        </div>
-     </div>
+         </div>
   </div>
-  <div class="row" data-spy="scroll" data-target="#checklist_category_navbar" id="checklist_content">
+  <div class="row"  id="checklist_content" >
     <div class="span9">
       <%= yield :project_checklist_user %>
     </div>
