@@ -12,3 +12,4 @@
 //
 //= require jquery.ha-hashchange
 //= require swiftype
+//= require_directory ./bounce

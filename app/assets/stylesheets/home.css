@@ -10,4 +10,5 @@
  *
  *= require search
  *= require autocomplete
+ *= require_directory ./bounce
  */

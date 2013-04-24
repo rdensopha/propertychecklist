@@ -5,9 +5,12 @@
   <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-  <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag params[:controller]%>
   <%= javascript_include_tag  params[:controller] %>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
   <%= csrf_meta_tags %>
   <style type="text/css">
   body {
@@ -19,9 +22,7 @@
   font-size:  14px;
   font-weight: 200;
   }
-  li{
-      font-family: 'Noto Sans', sans-serif;
-  }
+
   </style>
   <script type="text/javascript">
       $(document).ready(function() {
@@ -59,28 +60,131 @@
   </div>
 </div>
 
-<div class="container">
 
-  <!-- Main hero unit for a primary marketing message or call to action -->
-  <div class="hero-unit">
-    <h4>Hello, Everybody !</h4>
-    <h4>We all know that buying property  is an extremely complex process in India, with<span class="label label-important"> no transparency at all.</span> End customers like you
-    who don't have time and complete knowledge are taken for a ride by builders/developers.This site seeks to provide the following services to you</h4>
-    <ul>
-      <li><h5>A "must verify" checklist to check before buying property</h5></li>
-      <li><h5>the checklist is shared among all buyers for a particular property, so you know what "other buyers" are saying about the property</h5></li>
-      <li><h5>Get to know other members who are buying the property, and collaborate with them, right from the start</h5></li>
-      <li><h5>Can demand for your rights as a group, better collaborate among yourselves </h5></li>
-    </ul>
-    <h4>It is very important to  collaborate among yourselves as a group, to clarify all the details, so go ahead</h4>
+<!-- bounce html-->
+<div id="landing">
+  <div class="container">
+    <div class="row">
+      <div class="span8">
+        <h1>Hello, Everybody !</h1>
+        <p>We all know that buying property  is an extremely complex process in India, with<span class="label label-important"> no transparency at all.</span> End customers like you
+          who don't have time and complete knowledge are taken for a ride by builders/developers.This site seeks to provide the following services to you</p>
+        <ul>
+          <li><h5>A "must verify" checklist to check before buying property</h5></li>
+          <li><h5>the checklist is shared among all buyers for a particular property, so you know what "other buyers" are saying about the property</h5></li>
+          <li><h5>Get to know other members who are buying the property, and collaborate with them, right from the start</h5></li>
+          <li><h5>Can demand for your rights as a group, better collaborate among yourselves </h5></li>
+        </ul>
+        <h4>It is very important to  collaborate among yourselves as a group, to clarify all the details, so go ahead</h4>
+      </div>
+
+    </div>
   </div>
-  <div class="row">
-      <div class="span7">
-        <div class="well well-large">
-          <%= yield :project_search %>
+</div>
+<div id="content" class="txt-middle">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <h2>Great features of your product or service</h2>
+        <hr class="dashed">
+      </div>
+    </div>
+    <div class="row">
+      <div class="span4 bouncy">
+        <div class="icon_wrapper">
+          <i class="glyphicons-display animated"></i>
         </div>
+        <h2>Modern and Minimalistic</h2>
+        <p>Bounce is built on the awesome frontend framework Bootstrap, giving you easy access to all of its features.</p>
+      </div>
+      <div class="span4 bouncy">
+        <div class="icon_wrapper">
+          <i class="glyphicons-font animated"></i>
+        </div>
+        <h2>Awesome Typography</h2>
+        <p>Bounce uses the beautiful Open Sans Google Web Font and Glyphicons Pro to deliver highly scalable icons.</p>
+      </div>
+      <div class="span4 bouncy">
+        <div class="icon_wrapper">
+          <i class="glyphicons-airplane animated"></i>
+        </div>
+        <h2>Launch Ready</h2>
+        <p>Bounce comes with several pages and colors, giving you a head start on creating a unique design.</p>
+      </div>
+    </div>
+    <hr class="dashed">
+    <div class="row">
+      <div class="span4">
+        <a class="thumbnail" href="">
+          <img alt="image" src="http://quickimage.it/400x200">
+        </a>
+        <h2>Image 1</h2>
+        <p>Optional subtext to help better explain the image above can go here.</p>
+      </div>
+      <div class="span4">
+        <a class="thumbnail" href="">
+          <img alt="image" src="http://quickimage.it/400x200">
+        </a>
+        <h2>Image 2</h2>
+        <p>Optional subtext to help better explain the image above can go here.</p>
+      </div>
+      <div class="span4">
+        <a class="thumbnail" href="">
+          <img alt="image" src="http://quickimage.it/400x200">
+        </a>
+        <h2>Image 3</h2>
+        <p>Optional subtext to help better explain the image above can go here.</p>
       </div>
     </div>
   </div>
+</div>
+<div id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="span3">
+        <h3>Quick Links</h3>
+        <ul class="animated">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="span3">
+        <h3>Company</h3>
+        <ul class="animated">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="span3">
+        <h3>We're Social</h3>
+        <ul class="animated">
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Google &#43;</a></li>
+        </ul>
+      </div>
+      <div class="span3">
+        <h3>Subscribe</h3>
+        <p>Subscribe to our newsletter and stay up to date with the latest news and deals!</p>
+        <form>
+          <input class="span3" type="text" placeholder="Your Email" name="subscribe">
+          <button class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="copywrite">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <p>&copy; PropertyChecklist.in <span id="totop" class="pull-right">Back to Top <i class="icon-arrow-up icon-white"></i></span></p>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
