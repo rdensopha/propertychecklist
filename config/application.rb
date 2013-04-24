@@ -54,7 +54,10 @@ module Propertychecklist
     config.active_record.whitelist_attributes = true
 
     # Enable the asset pipeline
-    config.assets.enabled = false
+    config.assets.enabled = true
+
+    #Add  Rails_root/lib/assets path to search path for sprockets
+    #config.assets.paths << Rails.root.join("lib")
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
