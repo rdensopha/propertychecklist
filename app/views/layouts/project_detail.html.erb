@@ -7,6 +7,7 @@
   <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
+  <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
   <%= csrf_meta_tags %>
   <script type="text/javascript">
       (function() {
@@ -57,6 +58,27 @@
               radioClass: 'iradio_flat-red'
           });
 
+         //firebase client authentication
+           var dataRef =  new Firebase("https://propertychecklist-comments.firebaseio.com/chat");
+           <%  unless  session[:current_user_id].nil?%>
+                   console.log('<%= session[:firebase_auth_id]%>');
+                  AUTH_KEY = '<%= session[:firebase_auth_id]%>';
+                  dataRef.auth('<%= session[:firebase_auth_id]%>', function(error){
+                      if(error) {
+                          console.log("Login Failed", error);
+                      } else {
+                          console.log("Login Succeeded");
+                      }
+                  });
+          <% end %>
+          dataRef.on('child_added', function(snapshot){
+              var chatData = snapshot.val();
+              var user_name = chatData.name;
+              var chat_info = chatData.text;
+              var insert_text = "<li>" + chat_info + "</li>";
+              $("#comments_list").append(insert_text)
+          });
+          // end of firebase client authentication
        });
       /*  for iCheck feature */
       $(function(){
@@ -64,7 +86,7 @@
               offset: $('#sub_nav').position()
           });
 
-          $("#checklist_content").scrollspy();
+          $("#checklist_content").customScrollbar();
       });
   </script>
   <style type="text/css">
@@ -73,7 +95,9 @@
           top: 0;
           width: 100%
       }
-
+      #checklist_content {
+          height: 400px;
+      }
   </style>
 </head>
 <body >
@@ -121,11 +145,28 @@
            </ul>
          </div>
   </div>
-  <div class="row"  id="checklist_content" >
-    <div class="span9">
+  <div class="row " >
+    <div class="span7">
       <%= yield :project_checklist_user %>
     </div>
+    <div class="span5" id="project_comments">
+    <div class="well">
+       <ul id="comments_list">
+       </ul>
+      <div class="navbar navbar-static-bottom">
+         <div class="navbar-inner">
+            <ul class="nav">
+                   <form class="navbar-form pull-right">
+                      <input type="text" class="span3">
+                     <button type="submit" class="btn">Submit</button>
+                   </form>
+            </ul>
+         </div>
+      </div>
+    </div>
+    </div>
   </div>
+
 </div>
 <div id="modalLogin" class="modal hide fade">
   <div class="modal-header">

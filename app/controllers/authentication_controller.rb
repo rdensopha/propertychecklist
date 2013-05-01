@@ -1,4 +1,5 @@
 require 'httparty'
+require 'firebase_token_generator'
 class AuthenticationController < ApplicationController
   include HTTParty
   base_uri "rpxnow.com/api/v2/auth_info"
@@ -6,6 +7,7 @@ class AuthenticationController < ApplicationController
     id_token = params[:token]
     response = self.class.get("", query: {apiKey: ENV["JANRAIN_KEY"], token: id_token})
     session[:current_user_id] = (process_user_info response.parsed_response).id  if response.code == 200
+    session[:firebase_auth_id] = generate_token_firebase_client(id_token)
     respond_to do |format|
       format.html {redirect_to root_path}
     end
@@ -36,5 +38,14 @@ class AuthenticationController < ApplicationController
               user_loggedin.add_role :projectMember
         end
         user_loggedin
+  end
+
+  def generate_token_firebase_client(hash_data)
+    firebase_secret = ENV["FIREBASE_SECRET_KEY"]
+    options = {notBefore: DateTime.parse(Time.local(2010, 03, 28, 1, 30, 30).to_s).to_time.to_i,
+                       expires: DateTime.parse(Time.current.advance(hours:24).to_s).to_time.to_i}
+    auth_data = {}
+    generator = Firebase::FirebaseTokenGenerator.new(firebase_secret)
+    token = generator.create_token(auth_data, options)
   end
 end

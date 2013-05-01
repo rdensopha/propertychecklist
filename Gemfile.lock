@@ -52,6 +52,7 @@ GEM
       multi_json (~> 1.0)
     figaro (0.6.1)
       rails (>= 3, < 5)
+    firebase_token_generator (1.0.1)
     friendly_id (4.0.9)
     hike (1.2.1)
     httparty (0.10.2)
@@ -137,6 +138,7 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 3.2.1)
   figaro
+  firebase_token_generator (~> 1.0.1)
   friendly_id (~> 4.0.9)
   httparty
   jquery-rails
