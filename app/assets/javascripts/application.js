@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery.icheck
+//= require_directory ./custom_scrollbar
 
 
 

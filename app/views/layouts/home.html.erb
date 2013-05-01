@@ -14,14 +14,10 @@
   <%= csrf_meta_tags %>
   <style type="text/css">
   body {
-  padding-top: 60px;
-  padding-bottom: 40px;
+  padding-top: 40px;
   font-size: 16px;
   }
-  p{
-  font-size:  14px;
-  font-weight: 200;
-  }
+
 
   </style>
   <script type="text/javascript">
@@ -83,6 +79,13 @@
 </div>
 <div id="content" class="txt-middle">
   <div class="container">
+    <div class="row">
+      <div class="span12">
+        <h2>Enter the name of the project you are interested about</h2>
+        <%= yield :project_search %>
+        <hr class="dashed">
+      </div>
+    </div>
     <div class="row">
       <div class="span12">
         <h2>Great features of your product or service</h2>
