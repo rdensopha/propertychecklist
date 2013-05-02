@@ -40,11 +40,10 @@ class AuthenticationController < ApplicationController
         user_loggedin
   end
 
-  def generate_token_firebase_client(hash_data)
+  def generate_token_firebase_client(token_id)
     firebase_secret = ENV["FIREBASE_SECRET_KEY"]
-    options = {notBefore: DateTime.parse(Time.local(2010, 03, 28, 1, 30, 30).to_s).to_time.to_i,
-                       expires: DateTime.parse(Time.current.advance(hours:24).to_s).to_time.to_i}
-    auth_data = {}
+    options = {expires: DateTime.parse(Time.current.advance(hours:24).to_s).to_time.to_i}
+    auth_data = {user_token_data: token_id}
     generator = Firebase::FirebaseTokenGenerator.new(firebase_secret)
     token = generator.create_token(auth_data, options)
   end

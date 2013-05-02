@@ -59,10 +59,9 @@
           });
 
          //firebase client authentication
-           var dataRef =  new Firebase("https://propertychecklist-comments.firebaseio.com/chat");
+           var dataRef =  new Firebase("<%= ENV['FIREBASE_DATA_URL']%>");
            <%  unless  session[:current_user_id].nil?%>
                    console.log('<%= session[:firebase_auth_id]%>');
-                  AUTH_KEY = '<%= session[:firebase_auth_id]%>';
                   dataRef.auth('<%= session[:firebase_auth_id]%>', function(error){
                       if(error) {
                           console.log("Login Failed", error);
@@ -71,14 +70,16 @@
                       }
                   });
           <% end %>
-          dataRef.on('child_added', function(snapshot){
+          // end of firebase client authentication
+          var projectRef = dataRef.child('projects').child('<%= return_project_label_firebase(@project)%>');
+         projectRef.child('comments').on('child_added', function(snapshot){
               var chatData = snapshot.val();
               var user_name = chatData.name;
               var chat_info = chatData.text;
               var insert_text = "<li>" + chat_info + "</li>";
               $("#comments_list").append(insert_text)
           });
-          // end of firebase client authentication
+
        });
       /*  for iCheck feature */
       $(function(){

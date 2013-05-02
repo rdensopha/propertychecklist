@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @master_categories = Category.where parentCategory_id: nil
     @answers_labels = ['Yes' , 'No' , 'I have not yet verified']
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
@@ -118,7 +119,12 @@ class ProjectsController < ApplicationController
     ProjectChecklistResponse.response_project_question_count(project_num, question_num, response_value)
     #ProjectChecklistResponse. where(project_id: project_num, question_id: question_num, responseValue: response_value).count
   end
+
+  def return_project_label_firebase(project)
+        project.name.downcase << "_" << project.project_developer.name.downcase
+  end
   #helper methods
-  helper_method :project_checklist_response_user_question, :return_answer_id, :return_question_label, :checklist_question_info_display, :response_count_for_question
+  helper_method :project_checklist_response_user_question, :return_answer_id, :return_question_label,
+                :checklist_question_info_display, :response_count_for_question,:return_project_label_firebase
 
 end
