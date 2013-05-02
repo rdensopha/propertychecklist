@@ -23,7 +23,8 @@ namespace :populate_firebase_bootup do
       end
       #iterate through all the projects and load in to firebase
       Project.find_each do |project_fmdb|
-        project_id =  project_fmdb.name.downcase << "_" << project_fmdb.project_developer.name.downcase
+        processed_proj_dev_name =  project_fmdb.project_developer.name.downcase.gsub(/\./,'')
+        project_id =  project_fmdb.name.downcase << "_" <<  processed_proj_dev_name
         BasicFireBase.add_project(project_id, project_fmdb.project_developer.name, project_fmdb.city.name.chomp, project_fmdb.name)
       end
     end
