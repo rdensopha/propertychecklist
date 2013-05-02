@@ -7,7 +7,7 @@ namespace :populate_firebase_bootup do
 
         base_uri 'https://propertychecklist-comments.firebaseio.com'
 
-        default_params auth:  'uteaBcBLy6bSfmQOd4QdOjmRotg844Ul3bDEktL3'
+        default_params auth:  'ENV["FIREBASE_SECRET_KEY"]'
 
         format :json
 
