@@ -7,7 +7,7 @@ namespace :populate_firebase_bootup do
 
         base_uri 'https://propertychecklist-comments.firebaseio.com'
 
-        default_params auth:  'ENV["FIREBASE_SECRET_KEY"]'
+        default_params auth:  ENV["FIREBASE_SECRET_KEY"]
 
         format :json
 
@@ -25,7 +25,8 @@ namespace :populate_firebase_bootup do
       Project.find_each do |project_fmdb|
         processed_proj_dev_name =  project_fmdb.project_developer.name.downcase.gsub(/\./,'')
         project_id =  project_fmdb.name.downcase << "_" <<  processed_proj_dev_name
-        BasicFireBase.add_project(project_id, project_fmdb.project_developer.name, project_fmdb.city.name.chomp, project_fmdb.name)
+        result = BasicFireBase.add_project(project_id, project_fmdb.project_developer.name, project_fmdb.city.name.chomp, project_fmdb.name)
+        puts result
       end
     end
   end

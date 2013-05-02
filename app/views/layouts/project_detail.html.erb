@@ -8,6 +8,7 @@
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
   <%= csrf_meta_tags %>
   <script type="text/javascript">
       (function() {
@@ -79,7 +80,9 @@
               var insert_text = "<li>" + chat_info + "</li>";
               $("#comments_list").append(insert_text)
           });
-
+          var some_moment_string = "2013-05-02 22:00:40";
+          var some_moment = moment(some_moment_string, "YYYY-MM-DD HH:mm:ss" )
+          console.log(some_moment.fromNow());
        });
       /*  for iCheck feature */
       $(function(){
