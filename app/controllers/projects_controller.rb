@@ -121,7 +121,8 @@ class ProjectsController < ApplicationController
   end
 
   def return_project_label_firebase(project)
-        project.name.downcase << "_" << project.project_developer.name.downcase
+        processed_proj_dev_name =  project.project_developer.name.downcase.gsub(/\./,'')
+        project.name.downcase << "_" << processed_proj_dev_name
   end
   #helper methods
   helper_method :project_checklist_response_user_question, :return_answer_id, :return_question_label,

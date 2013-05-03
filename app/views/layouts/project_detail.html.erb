@@ -74,10 +74,12 @@
           // end of firebase client authentication
           var projectRef = dataRef.child('projects').child('<%= return_project_label_firebase(@project)%>');
          projectRef.child('comments').on('child_added', function(snapshot){
-              var chatData = snapshot.val();
-              var user_name = chatData.name;
-              var chat_info = chatData.text;
-              var insert_text = "<li>" + chat_info + "</li>";
+              var commentMetaData = snapshot.val();
+              var comment_content = commentMetaData.comment_content;
+              var user_name = commentMetaData.user_name;
+             var comment_time = commentMetaData.timestamp;
+             comment_time_moment = moment(comment_time, "YYYY-MM-DD HH:mm:ss");
+              var insert_text = "<li>" + comment_content + "</li>" + "<li>" +user_name+ "&nbsp;&nbsp;" + comment_time_moment.fromNow() + "</li>";
               $("#comments_list").append(insert_text)
           });
           var some_moment_string = "2013-05-02 22:00:40";
