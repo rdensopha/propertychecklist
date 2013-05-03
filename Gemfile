@@ -34,7 +34,7 @@ end
 
   gem 'simple_form'
 
-  gem 'rb-readline'
+  gem 'rb-readline','~>0.4.2'
 
   gem 'friendly_id', '~>4.0.9'
 

@@ -145,7 +145,7 @@ DEPENDENCIES
   meta_request
   pg
   rails (= 3.2.12)
-  rb-readline
+  rb-readline (~> 0.4.2)
   rolify
   sass-rails (~> 3.2.3)
   simple_form
