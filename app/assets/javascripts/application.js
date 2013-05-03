@@ -12,6 +12,7 @@
 //
 //= require jquery.icheck
 //= require_directory ./custom_scrollbar
+//= require_directory ./bounce
 
 
 
