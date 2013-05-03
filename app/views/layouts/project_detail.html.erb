@@ -55,7 +55,7 @@
               <% end %>
             });
 
-          $('input').iCheck({
+          $('.radio > input').iCheck({
               checkboxClass: 'icheckbox_flat-red',
               radioClass: 'iradio_flat-red'
           });
@@ -86,6 +86,17 @@
           var some_moment_string = "2013-05-02 22:00:40";
           var some_moment = moment(some_moment_string, "YYYY-MM-DD HH:mm:ss" )
           console.log(some_moment.fromNow());
+
+          $("#comment_submit").click(function(){
+            projectRef.child('comments').push({
+              comment_content:$("#comment_text").val(),
+              comment_type:$("input[type='radio'][name='contentType']:checked").val(),
+              timestamp:moment().format("YYYY-MM-DD HH:mm:ss"),
+              username:"",
+              user_identity_provider:"",
+              user_token:"" 
+            });// end of push statement
+          });// end of event handler for comment submit button
        });
       /*  for iCheck feature */
       $(function(){
@@ -165,16 +176,18 @@
     <div class="well">
        <ul id="comments_list">
        </ul>
-      <div class="navbar navbar-static-bottom">
-         <div class="navbar-inner">
-            <ul class="nav">
-                   <form class="navbar-form pull-right">
-                      <input type="text" class="span3">
-                     <button type="submit" class="btn">Submit</button>
-                   </form>
-            </ul>
-         </div>
-      </div>
+       <hr class="thick">
+       <form>
+         <fieldset>
+           <legend>Create Comment</legend>
+           Comment:<input type="text" size="20" id="comment_text"><br>
+           Comment Related To Section<br>
+           <input type="radio" name="contentType" value="Builder">Builder</input>
+           <input type="radio" name="contentType" value="Project">Project</input>
+           <input type="radio" name="contentType" value="Apartment">Apartment</input>
+           <button type="submit" class="btn" id="comment_submit">Submit</button>
+         </fieldset> 
+       </form> 
     </div>
     </div>
   </div>
