@@ -46,7 +46,10 @@
   <script type="text/javascript">
 
       $(document).ready(function(){
+              //====for hiding the submit button of each form submit of a question
              $('input[type=submit]').css('display','none');
+
+             //=====display modal login window or submit answer if user logged in
             $('input[type=radio]').click(function(){
               <% if session[:current_user_id].nil?  %>
                 $("#modalLogin").modal('show');
@@ -55,24 +58,15 @@
               <% end %>
             });
 
+          //===display special radio buttons for answers of each question
           $('.radio > input').iCheck({
               checkboxClass: 'icheckbox_flat-red',
               radioClass: 'iradio_flat-red'
           });
 
-         //firebase client authentication
+
            var dataRef =  new Firebase("<%= ENV['FIREBASE_DATA_URL']%>");
-           <%  unless  session[:current_user_id].nil?%>
-                   console.log('<%= session[:firebase_auth_id]%>');
-                  dataRef.auth('<%= session[:firebase_auth_id]%>', function(error){
-                      if(error) {
-                          console.log("Login Failed", error);
-                      } else {
-                          console.log("Login Succeeded");
-                      }
-                  });
-          <% end %>
-          // end of firebase client authentication
+
           var projectRef = dataRef.child('projects').child('<%= return_project_label_firebase(@project)%>');
          projectRef.child('comments').on('child_added', function(snapshot){
               var commentMetaData = snapshot.val();
@@ -81,31 +75,30 @@
              var comment_time = commentMetaData.timestamp;
              comment_time_moment = moment(comment_time, "YYYY-MM-DD HH:mm:ss");
               var insert_text = "<li>" + comment_content + "<br/>" +user_name+ "&nbsp;&nbsp;" + comment_time_moment.fromNow() + "</li>";
-              $("#comments_list").append(insert_text)
+              $("#comments_list").append(insert_text);
           });
-          var some_moment_string = "2013-05-02 22:00:40";
-          var some_moment = moment(some_moment_string, "YYYY-MM-DD HH:mm:ss" )
-          console.log(some_moment.fromNow());
 
+       <% unless session[:current_user_id].nil? %>
+         //========================comment submit button click handler
           $("#comment_submit").click(function(){
             projectRef.child('comments').push({
               comment_content:$("#comment_text").val(),
               comment_type:$("input[type='radio'][name='contentType']:checked").val(),
               timestamp:moment().format("YYYY-MM-DD HH:mm:ss"),
-              username:"",
-              user_identity_provider:"",
-              user_token:"" 
+              user_name:'<%= @user.displayName%>',
+              user_identity_provider:'<%= @user.providerName%>',
+              user_token:'<%= @user.identifier%>'
             });// end of push statement
           });// end of event handler for comment submit button
-       });
-      /*  for iCheck feature */
-      $(function(){
+        //==========================end of submit button handler
+      <% end %>
+          //====================for affixing the sub-nav bar
           $('#sub_nav').affix({
               offset: $('#sub_nav').position()
-          });
+           });
+          //===================== affix sub-nav bar
 
-          $("#checklist_content").customScrollbar();
-      });
+       }); //end of document ready
   </script>
   <style type="text/css">
       #sub_nav.affix {
@@ -177,17 +170,14 @@
        <ul id="comments_list">
        </ul>
        <hr class="thick">
-       <form>
-         <fieldset>
-           <legend>Create Comment</legend>
+
            Comment:<input type="text" size="20" id="comment_text"><br>
            Comment Related To Section<br>
            <input type="radio" name="contentType" value="Builder">Builder</input>
            <input type="radio" name="contentType" value="Project">Project</input>
            <input type="radio" name="contentType" value="Apartment">Apartment</input>
            <button type="submit" class="btn" id="comment_submit">Submit</button>
-         </fieldset> 
-       </form> 
+
     </div>
     </div>
   </div>

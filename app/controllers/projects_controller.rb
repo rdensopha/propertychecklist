@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @master_categories = Category.where parentCategory_id: nil
     @answers_labels = ['Yes' , 'No' , 'I have not yet verified']
-
+    @user = User.find(session[:current_user_id]) if session[:current_user_id].present?
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
