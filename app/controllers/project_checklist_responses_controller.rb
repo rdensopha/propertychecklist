@@ -12,7 +12,7 @@ class ProjectChecklistResponsesController < ApplicationController
          project_checklist_response.project_id= project_id
          project_checklist_response.question_id= question_id
          project_checklist_response.responseValue= answer_value
-         project_checklist_response.user_id= user_id.id
+         project_checklist_response.user_id= user_id
          project_checklist_response.status="Active"
       else
          project_checklist_response.responseValue= answer_value
