@@ -213,8 +213,12 @@
            <input type="radio" name="contentType" value="Project">Project</input>
            <input type="radio" name="contentType" value="Apartment">Apartment</input>
            <input type="radio" name="contentType" value="Project Documentation">Project Documentation</input>
-           <input type="radio" name="contentType" value="Land Documentation">Land Documentation</input>
-           <button type="submit" class="btn" id="comment_submit">Submit</button>
+           <input type="radio" name="contentType" value="Land Documentation">Land Documentation</input><br>
+           <% if session[:current_user_id].nil? %>
+              You must be logged in to post comments!
+           <% else %>
+             <button type="submit" class="btn" id="comment_submit">Submit</button>
+           <% end %>
            </span>
     </div>
     </div>
