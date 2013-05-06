@@ -16,7 +16,7 @@
           if (typeof window.janrain !== 'object') window.janrain = {};
           if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
 
-          janrain.settings.tokenUrl ='<%= ENV["AUTHENTICATION_LOGIN_URL"] %>';
+          janrain.settings.tokenUrl ='<%= ENV["AUTHENTICATION_LOGIN_URL"].dup << "?id=" << params[:id]%>';
 
           function isReady() { janrain.ready = true; };
           if (document.addEventListener) {

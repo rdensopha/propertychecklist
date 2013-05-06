@@ -5,11 +5,12 @@ class AuthenticationController < ApplicationController
   base_uri "rpxnow.com/api/v2/auth_info"
   def loginuser
     id_token = params[:token]
+    @project = Project.find(params[:id])
     response = self.class.get("", query: {apiKey: ENV["JANRAIN_KEY"], token: id_token})
     session[:current_user_id] = (process_user_info response.parsed_response).id  if response.code == 200
     session[:firebase_auth_id] = generate_token_firebase_client(id_token)
     respond_to do |format|
-      format.html {redirect_to root_path}
+      format.html {redirect_to project_path(@project)}
     end
   end
 
