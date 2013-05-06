@@ -83,8 +83,12 @@
       <div class="span12">
         <h2>Enter the name of the project you are interested about</h2>
         <%= yield :project_search %>
-        <hr class="dashed">
       </div>
+      <div class="row">
+        <div class="span3"></div>
+        <div class="span7"> <%= yield :project_search_listing %> </div>
+        <div class="span2"></div>
+      </div>  
     </div>
     <div class="row">
       <div class="span12">
@@ -94,23 +98,14 @@
     </div>
     <div class="row">
       <div class="span4 bouncy">
-        <div class="icon_wrapper">
-          <i class="glyphicons-display animated"></i>
-        </div>
         <h2>Modern and Minimalistic</h2>
         <p>Bounce is built on the awesome frontend framework Bootstrap, giving you easy access to all of its features.</p>
       </div>
       <div class="span4 bouncy">
-        <div class="icon_wrapper">
-          <i class="glyphicons-font animated"></i>
-        </div>
         <h2>Awesome Typography</h2>
         <p>Bounce uses the beautiful Open Sans Google Web Font and Glyphicons Pro to deliver highly scalable icons.</p>
       </div>
       <div class="span4 bouncy">
-        <div class="icon_wrapper">
-          <i class="glyphicons-airplane animated"></i>
-        </div>
         <h2>Launch Ready</h2>
         <p>Bounce comes with several pages and colors, giving you a head start on creating a unique design.</p>
       </div>

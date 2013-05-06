@@ -3,5 +3,7 @@
         <input class="span3 st-search-input search-query" id="projectSearchField" type="text" />
         <span class="help-inline">Press Enter key to search</span>
     </form>
-    <div id="projects-results-container" class="st-result-listing"></div>
 <% end %>
+<% content_for :project_search_listing do %>
+   <div id="projects-results-container" class="st-result-listing"></div>
+<% end %>   
