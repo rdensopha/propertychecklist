@@ -17,8 +17,12 @@
   padding-top: 40px;
   font-size: 16px;
   }
-
-
+  .search_font a {
+    font-size: 16px;
+  }
+  h2.features {
+    color:#308CCF;
+  }
   </style>
   <script type="text/javascript">
       $(document).ready(function() {
@@ -98,37 +102,37 @@
     </div>
     <div class="row">
       <div class="span4 bouncy">
-        <h2>Modern and Minimalistic</h2>
-        <p>Bounce is built on the awesome frontend framework Bootstrap, giving you easy access to all of its features.</p>
+        <h2 class="features">Comprehensive Checklist</h2>
+        <p>PropertyChecklist.in gives you a comprehensive checklist of Dos' and Donts' to take care of before at time of buying a property, at a one single place. in a layman's language.</p>
       </div>
       <div class="span4 bouncy">
-        <h2>Awesome Typography</h2>
-        <p>Bounce uses the beautiful Open Sans Google Web Font and Glyphicons Pro to deliver highly scalable icons.</p>
+        <h2 class="features">Social Checklist</h2>
+        <p>The checklist questions are Project-wise, so you can get a clear idea what other buyers are saying about the Project</p>
       </div>
       <div class="span4 bouncy">
-        <h2>Launch Ready</h2>
-        <p>Bounce comes with several pages and colors, giving you a head start on creating a unique design.</p>
+        <h2 class="features">Group Chat</h2>
+        <p>Collaborate with other buyers who are buying in to the same project.</p>
       </div>
     </div>
     <hr class="dashed">
     <div class="row">
       <div class="span4">
-        <a class="thumbnail" href="">
-          <img alt="image" src="http://quickimage.it/400x200">
-        </a>
+       <a class="thumbnail" href=""> 
+        <%= image_tag("ChecklistImage1.png", size: "399x199")%>
+       </a> 
         <h2>Image 1</h2>
         <p>Optional subtext to help better explain the image above can go here.</p>
       </div>
       <div class="span4">
-        <a class="thumbnail" href="">
-          <img alt="image" src="http://quickimage.it/400x200">
-        </a>
+       <a class="thumbnail" href=""> 
+        <%= image_tag("ChecklistImage2.png", size: "399x199") %>
+       </a> 
         <h2>Image 2</h2>
         <p>Optional subtext to help better explain the image above can go here.</p>
       </div>
       <div class="span4">
         <a class="thumbnail" href="">
-          <img alt="image" src="http://quickimage.it/400x200">
+          <%= image_tag("ChecklistImage3.png", size: "400x200") %>
         </a>
         <h2>Image 3</h2>
         <p>Optional subtext to help better explain the image above can go here.</p>
