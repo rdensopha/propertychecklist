@@ -24,10 +24,11 @@
     <%@master_categories.each do |master_category|  %>
         <section id="<%= master_category.name%>">
            <div class="page-header">
-              <h2><%= master_category.name %></h2>
+              <h2 class="section_header"><%= master_category.name %></h2>
               <%master_category.questions.each do |checklist_question|  %>
-                  <p>
-                      <%= simple_format(checklist_question.questionContent) %>
+                  <p> 
+                      <%= simple_format(checklist_question.questionContent, class: 'question') %>
+                      
                       <%  unless checklist_question.question_labels.first.nil?%>
                              <span class="label <%= return_question_label(checklist_question)%>"><%= checklist_question.question_labels.first.name  %></span>
                       <% end %>

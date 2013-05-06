@@ -68,19 +68,22 @@
            var dataRef =  new Firebase("<%= ENV['FIREBASE_DATA_URL']%>");
 
           var projectRef = dataRef.child('projects').child('<%= return_project_label_firebase(@project)%>');
-         projectRef.child('comments').on('child_added', function(snapshot){
-              var commentMetaData = snapshot.val();
-              var comment_content = commentMetaData.comment_content;
-              var user_name = commentMetaData.user_name;
-             var comment_time = commentMetaData.timestamp;
-             comment_time_moment = moment(comment_time, "YYYY-MM-DD HH:mm:ss");
-              var insert_text = "<li>" + comment_content + "<br/>" +user_name+ "&nbsp;&nbsp;" + comment_time_moment.fromNow() + "</li>";
-              $("#comments_list").append(insert_text);
-          });
+                  projectRef.child('comments').on('child_added', function(snapshot){
+                  var commentMetaData = snapshot.val();
+                  var comment_content = commentMetaData.comment_content;
+                  var user_name = commentMetaData.user_name;
+                 var comment_time = commentMetaData.timestamp;
+                 comment_time_moment = moment(comment_time, "YYYY-MM-DD HH:mm:ss");
+                  var insert_text = "<li>"+"<span class='comment_style'>"+ comment_content +"</span>"+"<br/>"+"<span class='comment_by'>"+"by&nbsp;"
+                  +user_name+ "</span>"+"&nbsp;&nbsp;" +"<span class='comment_by pull-right'>"+ comment_time_moment.fromNow() +"</span>"+ "</li><hr class='dashed my_hr'>";
+                  $("#comments_list").prepend(insert_text);
+                });
 
        <% unless session[:current_user_id].nil? %>
          //========================comment submit button click handler
+
           $("#comment_submit").click(function(){
+            if (validate_comments()) {
             projectRef.child('comments').push({
               comment_content:$("#comment_text").val(),
               comment_type:$("input[type='radio'][name='contentType']:checked").val(),
@@ -89,6 +92,9 @@
               user_identity_provider:'<%= @user.providerName%>',
               user_token:'<%= @user.identifier%>'
             });// end of push statement
+           } else {
+              $("#comment_submit").after('<div id="comment_validation">Comments must have text and Comment Category must be selected</div>');
+            }
           });// end of event handler for comment submit button
         //==========================end of submit button handler
       <% end %>
@@ -97,7 +103,12 @@
               offset: $('#sub_nav').position()
            });
           //===================== affix sub-nav bar
-
+          function validate_comments(){
+             $('#comment_validation').remove();
+             var comment_text =  $("#comment_text").val() || "";
+              var comment_type = $("input[type='radio'][name='contentType']:checked").val() || "";
+              return comment_text.length > 0 && comment_type.length >0;
+          }
        }); //end of document ready
   </script>
   <style type="text/css">
@@ -111,8 +122,32 @@
       }
       body {
           padding-top: 0px;
-          font-weight:600;
+          font-weight:300;
           font-size: 16px;
+      }
+      .comment_by {
+        font-size: 12px;
+        font-weight: 100;
+      }
+      hr.my_hr {
+        margin: 5px 0;
+      }
+      .comment_category {
+        font-size: 12px;
+      }
+      .comment_style {
+        color: #52A1F5;
+        font-size: 14px;
+        font-weight: 400;
+      }
+      #comment_validation{
+        color:#FE0314;
+      }
+      .question {
+        font-weight:600;
+      }
+      h2.section_header {
+        color:#FE0314;
       }
   </style>
 </head>
@@ -173,11 +208,14 @@
 
            Comment:<input type="text" size="20" id="comment_text"><br>
            Comment Related To Section<br>
+           <span class="comment_category">
            <input type="radio" name="contentType" value="Builder">Builder</input>
            <input type="radio" name="contentType" value="Project">Project</input>
            <input type="radio" name="contentType" value="Apartment">Apartment</input>
+           <input type="radio" name="contentType" value="Project Documentation">Project Documentation</input>
+           <input type="radio" name="contentType" value="Land Documentation">Land Documentation</input>
            <button type="submit" class="btn" id="comment_submit">Submit</button>
-
+           </span>
     </div>
     </div>
   </div>
