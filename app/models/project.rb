@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
  extend FriendlyId
-  attr_accessible :name, :project_developer_id
+  attr_accessible :name, :project_developer_id, :city_id
   belongs_to :project_developer
   has_many :project_checklist_responses
   belongs_to :city

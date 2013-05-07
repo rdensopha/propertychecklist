@@ -29,6 +29,16 @@
   #no_result_container {
     color: #FF0202;
   }
+  .intro {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  .blue-class {
+    color :#5697FA;
+  }
+  .list-font {
+    font-size: 18px;
+  }
   </style>
   <script type="text/javascript">
       $(document).ready(function() {
@@ -81,13 +91,13 @@
     <div class="row">
       <div class="span8">
         <h1>Hello, Everybody !</h1>
-        <p>We all know that buying property  is an extremely complex process in India, with<span class="label label-important"> no transparency at all.</span> End customers like you
-          who don't have time and complete knowledge are taken for a ride by builders/developers.This site seeks to provide the following services to you</p>
+        <p class="intro">We all know that buying property  is an extremely complex process in India, <span class="highlight">with no transparency</span> at all.First time property buyers like you
+          who don't have time and detailed knowledge are taken for a ride by builders/developers.<span class="blue-class">PropertyChecklist.in </span>seeks to provide the following services to you</p>
         <ul>
-          <li><h5>A "must verify" checklist to check before buying property</h5></li>
-          <li><h5>the checklist is shared among all buyers for a particular property, so you know what "other buyers" are saying about the property</h5></li>
-          <li><h5>Get to know other members who are buying the property, and collaborate with them, right from the start</h5></li>
-          <li><h5>Can demand for your rights as a group, better collaborate among yourselves </h5></li>
+          <li><h5 class="list-font">A "must verify" checklist to check before buying property.&nbsp;<a href='<%= "#{root_url}projects/taj-mahal" %>'>(A Sample Checklist)</a></h5></li>
+          <li><h5 class="list-font">the checklist is shared among all buyers for a particular property, so you know what "other buyers" are saying about the property</h5></li>
+          <li><h5 class="list-font">Get to know other members who are buying the property, and collaborate with them, right from the start</h5></li>
+          <li><h5 class="list-font">Can demand for your rights as a group, better collaborate among yourselves </h5></li>
         </ul>
         <h4>It is very important to  collaborate among yourselves as a group, to clarify all the details, so go ahead</h4>
       </div>
