@@ -45,6 +45,8 @@ end
   gem 'figaro'
 
   gem 'firebase_token_generator', '~> 1.0.1'
+
+  gem 'dynamic_sitemaps'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

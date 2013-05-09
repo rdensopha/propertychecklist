@@ -1,4 +1,6 @@
 Propertychecklist::Application.routes.draw do
+  match 'sitemap.xml' => 'sitemaps#sitemap'
+
   root :to => 'home#index'
 
   resources :cities
