@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: questions
+#
+#  id                     :integer          not null, primary key
+#  questionContent        :text
+#  answerType             :string(255)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  status                 :string(255)
+#  category_id            :integer
+#  question_info          :text
+#  question_info_emphasis :string(255)
+#
+
 class Question < ActiveRecord::Base
   #attributes are #answerType:string, #questionContent:text, #status:string,
   attr_accessible :answerType, :questionContent, :category_id, :question_label_ids, :question_info, :question_info_emphasis

@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: project_checklist_responses
+#
+#  id            :integer          not null, primary key
+#  project_id    :integer
+#  question_id   :integer
+#  user_id       :integer
+#  status        :string(255)
+#  responseValue :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 class ProjectChecklistResponse < ActiveRecord::Base
   # attr_accessible :title, :body
   belongs_to :project
