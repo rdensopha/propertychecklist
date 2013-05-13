@@ -32,6 +32,18 @@ group :development do
 
 end
 
+group :development, :test do
+  gem "rspec-rails", "~> 2.13.0"
+  gem "factory_girl_rails", "~> 4.2.1"
+end
+ 
+group :test do
+  gem "faker", "~> 1.1.2"
+  gem "capybara", "~> 2.0.2"
+  gem "database_cleaner", "~> 0.9.1"
+  gem "launchy", "~> 2.2.0"
+end
+
   gem 'simple_form'
 
   gem 'rb-readline','~>0.4.2'
@@ -47,6 +59,8 @@ end
   gem 'firebase_token_generator', '~> 1.0.1'
 
   gem 'dynamic_sitemaps'
+  
+  gem 'annotate', ">=2.5.0"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
