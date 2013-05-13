@@ -1,0 +1,16 @@
+#Settings, for total application
+
+defaults: &defaults
+ active: Active
+ inactive: InActive
+# development environment
+development:
+ <<: *defaults
+ 
+# test enviroment
+test:
+ <<: *defaults
+ 
+# production environment
+production:
+ <<: *defaults
