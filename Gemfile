@@ -34,6 +34,7 @@ end
 
 group :development, :test do
   gem "rspec-rails", "~> 2.13.0"
+  gem 'shoulda-matchers'
   gem "factory_girl_rails", "~> 4.2.1"
   gem 'wdm'
   gem 'guard-spork'
@@ -45,6 +46,7 @@ group :test do
   gem "capybara", "~> 2.0.2"
   gem "database_cleaner", "~> 0.9.1"
   gem "launchy", "~> 2.2.0"
+  #gem "shoulda-matchers", git: "git://github.com/thoughtbot/shoulda-matchers.git",ref: "cc03053"
 end
 
   gem 'simple_form'
