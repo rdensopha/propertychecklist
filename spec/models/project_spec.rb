@@ -31,4 +31,9 @@ describe 'Project' do
      testProj = Project.new(name: 'TestProject', status: 'crazyStatus')
      expect(testProj).to have(1).errors_on(:status)
   end
+  
+  it "is invalid without  status" do
+     testProj = Project.new(name: 'testProj', status:nil)
+     expect(testProj).to have(2).errors_on(:status)
+  end 
 end
