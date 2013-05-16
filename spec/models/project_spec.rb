@@ -27,6 +27,7 @@ describe 'Project' do
     #testProj = Project.new(name: nil, status: APP_CONFIG['active'])
     testProj = FactoryGirl.build(:project1, name: nil)
     expect(testProj).to have(1).errors_on(:name)
+    #expect(testProj).to validate_presence_of(:name)
   end
   
   it "is invalid with a invalid status value" do
