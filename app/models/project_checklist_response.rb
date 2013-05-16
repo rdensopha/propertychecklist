@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: project_checklist_responses
+#
+#  id            :integer          not null, primary key
+#  project_id    :integer
+#  question_id   :integer
+#  user_id       :integer
+#  status        :string(255)
+#  responseValue :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 class ProjectChecklistResponse < ActiveRecord::Base
   # attr_accessible :title, :body
   belongs_to :project
@@ -11,4 +25,17 @@ class ProjectChecklistResponse < ActiveRecord::Base
   def self.response_project_question_count(project_num, question_num, response_value)
       where(project_id: project_num, question_id: question_num, responseValue: response_value).count
   end
+  
+  #validations
+  validates :project_id,presence: true
+  validates :question_id,presence: true
+  validates :user_id,presence: true
+  validates :responseValue,presence: true
+  validates(:status,
+            presence: true,
+            inclusion: {
+              in:[APP_CONFIG.fetch('active'),APP_CONFIG.fetch('inactive')],
+              message: "%{value} is not a valid status"
+            })
+  
 end
