@@ -3,6 +3,9 @@
 defaults: &defaults
  active: Active
  inactive: InActive
+ yesValue: 0
+ noValue: 1
+ inotVerify: 2
 # development environment
 development:
  <<: *defaults
