@@ -120,6 +120,7 @@ GEM
     mime-types (1.21)
     multi_json (1.7.2)
     multi_xml (0.5.3)
+    newrelic_rpm (3.6.2.96)
     nokogiri (1.5.9)
     nokogiri (1.5.9-x86-mingw32)
     pg (0.15.0-x86-mingw32)
@@ -244,6 +245,7 @@ DEPENDENCIES
   jquery-rails
   launchy (~> 2.2.0)
   meta_request
+  newrelic_rpm
   pg
   rails (= 3.2.12)
   rb-readline (~> 0.4.2)
