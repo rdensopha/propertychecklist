@@ -18,7 +18,7 @@ class QuestionLabel < ActiveRecord::Base
   validates(:status,
             presence: true,
             inclusion: {
-                        in: ['Active','InActive'],
+                        in: [APP_CONFIG.fetch('inactive'),APP_CONFIG.fetch('active')],
                         message: "%{value} is not a valid status"}
            )           
 end

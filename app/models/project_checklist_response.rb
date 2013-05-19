@@ -33,13 +33,13 @@ class ProjectChecklistResponse < ActiveRecord::Base
   validates(:responseValue,
             presence: true,
             inclusion: {
-              in: [0,1,2],
+              in: [APP_CONFIG.fetch('yesValue'),APP_CONFIG.fetch('noValue'),APP_CONFIG.fetch('inotVerify')],
               message: "%{value} is not a valid responseValue"
             })
   validates(:status,
             presence: true,
             inclusion: {
-              in:['Active','InActive'],
+              in:[APP_CONFIG.fetch('active'),APP_CONFIG.fetch('inactive')],
               message: "%{value} is not a valid status"
             })
   
