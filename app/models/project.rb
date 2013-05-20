@@ -28,7 +28,7 @@ class Project < ActiveRecord::Base
   validates(:status,
             presence: true,
             inclusion:{
-              in: [APP_CONFIG.fetch('active'), APP_CONFIG.fetch('inactive')],
+              in: [APP_CONFIG.fetch('inactive'),APP_CONFIG.fetch('active')],
               message:"%{value} is not a valid status"
             })
 end
