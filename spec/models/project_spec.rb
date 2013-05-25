@@ -19,20 +19,20 @@ require 'spec_helper'
 describe 'Project' do
   it "is valid with valid name and status" do
     #testProj = Project.new(name: 'TestProject', status: APP_CONFIG['active'])
-    testProj = FactoryGirl.build(:project1)
+    testProj = FactoryGirl.build(:simple_project)
     expect(testProj).to be_valid
   end
   
   it "is invalid without a name" do
     #testProj = Project.new(name: nil, status: APP_CONFIG['active'])
-    testProj = FactoryGirl.build(:project1, name: nil)
+    testProj = FactoryGirl.build(:simple_project, name: nil)
     expect(testProj).to have(1).errors_on(:name)
     #expect(testProj).to validate_presence_of(:name)
   end
   
   it "is invalid with a invalid status value" do
      #testProj = Project.new(name: 'TestProject', status: 'crazyStatus')
-     testProj = FactoryGirl.build(:project1, status: 'crazystatus')
+     testProj = FactoryGirl.build(:simple_project, status: 'crazystatus')
      expect(testProj).to have(1).errors_on(:status)
   end
   
@@ -48,13 +48,13 @@ describe 'Project' do
 
   
   it "has belongs to association" do
-    testProj = FactoryGirl.create(:project1)
+    testProj = FactoryGirl.create(:simple_project)
     expect(testProj).to belong_to(:project_developer)
   end
   
   it "belongs to the assigned Project Developer" do
-     testProj = FactoryGirl.create(:project1)
-     testProjectDeveloper = FactoryGirl.create(:project_developer1)
+     testProj = FactoryGirl.create(:with_developer_project)
+     testProjectDeveloper = FactoryGirl.create(:simple_projectdeveloper)
      expect(testProj.project_developer.name).to eq(testProjectDeveloper.name)
   end
 
