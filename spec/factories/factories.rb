@@ -4,6 +4,9 @@ FactoryGirl.define do
     name 'project1'
     status APP_CONFIG['active']
     
+    factory :invalid_project do
+      name nil
+    end
     factory :with_developer_project do
       association :project_developer,factory: :simple_projectdeveloper
 =begin      
@@ -70,17 +73,19 @@ FactoryGirl.define do
   factory :simple_user, :class => User do
     status APP_CONFIG['active']
     displayName "xyzabc"
-=begin
-    
-    factory :with_responses_user do
-      ignore do
-         number_of_project_checklist_responses 1
-      end
-      # create list of project_checklist_responses for a user
-      after(:build) do |user_arg,evaluator|
-         FactoryGirl.build_list(:simple_projectchecklistresponse,evaluator.number_of_project_checklist_responses,user: user_arg)
-      end
-    end  
-=end
+  end
+  factory :logged_in_user, :class => User do
+     status APP_CONFIG['active']
+     displayName 'logged_user'
+  end
+  ################## Role factories #############
+  factory :admin_role, :class => Role do
+     name APP_CONFIG['admin_role']
+  end
+  factory :guest_role, :class => Role do
+     name APP_CONFIG['guest_role']
+  end
+  factory :project_member_role, :class => Role do
+     name APP_CONFIG['project_member_role']
   end
 end

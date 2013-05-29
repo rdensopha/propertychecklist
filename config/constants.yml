@@ -6,6 +6,9 @@ defaults: &defaults
  yesValue: 0
  noValue: 1
  inotVerify: 2
+ admin_role: admin
+ project_member_role: projectMember
+ guest_role: guest
 # development environment
 development:
  <<: *defaults
