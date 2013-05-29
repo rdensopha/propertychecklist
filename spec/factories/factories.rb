@@ -74,8 +74,18 @@ FactoryGirl.define do
     status APP_CONFIG['active']
     displayName "xyzabc"
   end
+  factory :logged_in_user, :class => User do
+     status APP_CONFIG['active']
+     displayName 'logged_user'
+  end
   ################## Role factories #############
-  factory :simple_role, :class => Role do
-     name 'admin'
+  factory :admin_role, :class => Role do
+     name APP_CONFIG['admin_role']
+  end
+  factory :guest_role, :class => Role do
+     name APP_CONFIG['guest_role']
+  end
+  factory :project_member_role, :class => Role do
+     name APP_CONFIG['project_member_role']
   end
 end

@@ -35,6 +35,7 @@ class Ability
     alias_action :edit, to: :update
     can :manage, :all  if user.has_role? :admin
     can :update_checklist, ProjectChecklistResponse if user.has_role? :projectMember
+    can :read, Project if user.has_role? :projectMember
     can :read, Project if user.has_role? :guest
 
   end

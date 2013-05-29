@@ -1,16 +1,13 @@
 require 'spec_helper'
 
 describe ProjectsController do
-  
-  describe 'guest role access' do 
-    before :each do
-      @project = FactoryGirl.create(:simple_project)
-    end 
+  ##########shared examples####################
+  shared_examples "public access to projects" do
     describe 'GET#index' do
-       it "raise AccessDenied" do
+      it "raise AccessDenied" do
          bypass_rescue
           expect { get :index }.to raise_error(CanCan::AccessDenied)
-       end
+      end
     end
     describe 'GET#show' do
       it "assignes the requested project to @project" do
@@ -25,39 +22,51 @@ describe ProjectsController do
     describe 'GET#new' do
       it "raise AccessDenied" do
          bypass_rescue
-         expect { get :index}.to raise_error(CanCan::AccessDenied)
+         expect { get :new}.to raise_error(CanCan::AccessDenied)
       end
     end
     describe 'GET#edit' do
-       it "raise AccessDenied" do
+      it "raise AccessDenied" do
           bypass_rescue
           expect { get(:edit,id: @project) }.to raise_error(CanCan::AccessDenied)
-       end
+      end
     end
     describe 'POST#create' do
-       it "raise AccessDenied" do
+      it "raise AccessDenied" do
           bypass_rescue 
           expect { post(:create, project: FactoryGirl.attributes_for(:simple_project))}.to raise_error(CanCan::AccessDenied)
-       end
+      end
     end
     describe 'PUT#update' do
-       it "raise Access denied" do
+      it "raise Access denied" do
           bypass_rescue
           expect { put(:update, id: @project, project: FactoryGirl.attributes_for(:simple_project)) }.to raise_error(CanCan::AccessDenied)
-       end
+      end
     end
     describe 'DELETE#destroy' do
-       it "raise Access denied" do
+      it "raise Access denied" do
           bypass_rescue
           expect { delete(:destroy, id: @project,project: FactoryGirl.attributes_for(:simple_project)) }.to raise_error(CanCan::AccessDenied)
-       end
+      end
     end
+  end
+  
+  ################ guest role ######################
+  describe 'guest role access' do 
+    before :each do
+      @project = FactoryGirl.create(:simple_project)
+      user = FactoryGirl.create(:simple_user,:roles => [FactoryGirl.create(:guest_role)])
+      session[:current_user_id] = user.id
+    end 
+    
+    it_behaves_like "public access to projects"
   end  
-
+  
+  ################ admin role ####################
   describe 'admin role access' do
      before :each do
        @project = FactoryGirl.create(:simple_project)
-       user = FactoryGirl.create(:simple_user,:roles => [FactoryGirl.create(:simple_role)])
+       user = FactoryGirl.create(:simple_user,:roles => [FactoryGirl.create(:admin_role)])
        session[:current_user_id] = user.id 
      end
      describe 'GET#index' do
@@ -81,7 +90,7 @@ describe ProjectsController do
         end
      end
      describe 'GET#new' do
-        it 'assigns a new message to @message' do
+        it 'assigns a new project' do
            get :new
            expect(assigns(:project)).to be_a_new Project
         end
@@ -162,4 +171,15 @@ describe ProjectsController do
         end
      end
   end
+  ################ projectMember role ################3
+  describe 'project member role access' do 
+    before :each do
+      @project = FactoryGirl.create(:simple_project)
+      user = FactoryGirl.create(:simple_user,:roles => [FactoryGirl.create(:project_member_role)])
+      session[:current_user_id] = user.id
+    end 
+    
+    it_behaves_like "public access to projects"
+  end  
+
 end
