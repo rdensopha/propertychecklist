@@ -22,9 +22,21 @@ Propertychecklist::Application.routes.draw do
 
 
   resources :categories
-
+################# for external API #############
   resources :project_developers
+  
+  namespace :api, defaults: {format: 'json'} do
+     namespace :v1 do
+       resources :projects do
+         collection do
+           get :count
+         end
+       end
+     end
+  end
 
+  
+#  match ':controller(/:action(/:id))',constraints: { :controller => /api\/v1\/[^\/]/ }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
