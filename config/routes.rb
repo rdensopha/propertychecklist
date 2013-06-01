@@ -29,7 +29,7 @@ Propertychecklist::Application.routes.draw do
      namespace :v1 do
        resources :projects do
          collection do
-           get :count
+           get :count, :added
          end
        end
      end
