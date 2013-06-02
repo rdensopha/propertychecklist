@@ -74,6 +74,8 @@ end
   gem 'oj'
   
   gem 'groupdate'
+  
+  gem 'workflow'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
