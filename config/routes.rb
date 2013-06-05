@@ -1,4 +1,7 @@
 Propertychecklist::Application.routes.draw do
+  resources :download_links
+
+
   match 'sitemap.xml' => 'sitemaps#sitemap'
 
   root :to => 'home#index'

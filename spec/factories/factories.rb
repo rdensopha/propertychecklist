@@ -88,4 +88,11 @@ FactoryGirl.define do
   factory :project_member_role, :class => Role do
      name APP_CONFIG['project_member_role']
   end
+  ############### DownloadLink factories ##########
+  factory  :download_link, :class => DownloadLink do
+     name "different_areas"
+     status APP_CONFIG['active']
+     url "xyz.com"
+     association :question,factory: :simple_question
+  end
 end

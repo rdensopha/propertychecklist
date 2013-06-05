@@ -36,6 +36,9 @@
                  <% unless checklist_question.question_info.blank? %>
                       <div class="alert alert-error"><%=  highlight(checklist_question.question_info,checklist_question.question_info_emphasis)%></div>
                  <% end %>
+                 <% unless checklist_question.download_links.first.blank?%>
+                      <a id="download_link" href="<%= checklist_question.download_links.first.url%>" target="_blank"><%= highlight(checklist_question.download_links.first.name,checklist_question.download_links.first.name)%></a>
+                 <% end%>
 
                         <%= form_tag('/project_checklist_responses', method: :post, remote: true) do %>
                            <%= hidden_field_tag 'project_id', @project.id %>

@@ -1,0 +1,27 @@
+<h1>Listing download_links</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Url</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @download_links.each do |download_link| %>
+  <tr>
+    <td><%= download_link.name %></td>
+    <td><%= download_link.status %></td>
+    <td><%= download_link.url %></td>
+    <td><%= link_to 'Show', download_link %></td>
+    <td><%= link_to 'Edit', edit_download_link_path(download_link) %></td>
+    <td><%= link_to 'Destroy', download_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Download link', new_download_link_path %>
