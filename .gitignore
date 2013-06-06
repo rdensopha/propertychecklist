@@ -22,3 +22,19 @@
 
 # Ignore compiled assets files
 /public/*
+
+# Ignore generated html files
+/*.html
+/dependencies.txt
+
+#Ignore generated project files
+/.project
+
+#Ignore config/heroku.yml
+/config/heroku.yml
+
+#Ignore the gitignore file
+.gitignore
+
+#Ignore database.yml
+/config/database.yml
