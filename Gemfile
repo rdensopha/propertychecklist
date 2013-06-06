@@ -49,6 +49,9 @@ group :test do
   #gem "shoulda-matchers", git: "git://github.com/thoughtbot/shoulda-matchers.git",ref: "cc03053"
 end
 
+group :production do
+  gem 'unicorn'
+end
   gem 'simple_form'
 
   gem 'rb-readline','~>0.4.2'
@@ -76,6 +79,7 @@ end
   gem 'groupdate'
   
   gem 'workflow'
+  
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
