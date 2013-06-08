@@ -50,7 +50,6 @@ group :test do
 end
 
 group :production do
-  gem 'rack-timeout'
   gem 'unicorn'
 end
   gem 'simple_form'
