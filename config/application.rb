@@ -64,5 +64,8 @@ module Propertychecklist
 
     #Added to prevent the #could not connect to server: Connection refused (0x0000274D/10061) error
     config.assets.initialize_on_precompile = false
+    
+    #Added for quiet_assets gem to have asset pipeline messages be output
+    # config.quiet_assets = false
   end
 end

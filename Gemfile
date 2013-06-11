@@ -30,6 +30,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'syntax'
+  gem 'quiet_assets'
+  gem 'thin'
 end
 
 group :development, :test do
