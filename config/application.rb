@@ -67,5 +67,8 @@ module Propertychecklist
     
     #Added for quiet_assets gem to have asset pipeline messages be output
     # config.quiet_assets = false
+
+    #Disable ANSI based coloring of logging statements.
+    config.colorize_logging = false
   end
 end

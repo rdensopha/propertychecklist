@@ -32,6 +32,8 @@ group :development do
   gem 'syntax'
   gem 'quiet_assets'
   gem 'thin'
+  gem 'bullet'
+  gem 'rack-mini-profiler'
 end
 
 group :development, :test do

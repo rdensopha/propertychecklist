@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-    @master_categories = Category.where parentCategory_id: nil
+    @master_categories = Category.where(parentCategory_id: nil).includes(:questions)
     @answers_labels = ['Yes' , 'No' , 'I have not yet verified']
     @user = User.find(session[:current_user_id]) if session[:current_user_id].present?
     respond_to do |format|

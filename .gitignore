@@ -38,3 +38,6 @@
 
 #Ignore database.yml
 /config/database.yml
+
+#Ignore sublime editor pages
+propertychecklist.*	
