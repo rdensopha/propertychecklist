@@ -40,7 +40,6 @@ group :development, :test do
   gem "rspec-rails", "~> 2.13.0"
   gem 'shoulda-matchers'
   gem "factory_girl_rails", "~> 4.2.1"
-  gem 'wdm'
   gem 'guard-spork'
   gem 'guard-rspec'
 end
@@ -52,10 +51,10 @@ group :test do
   gem "launchy", "~> 2.2.0"
   #gem "shoulda-matchers", git: "git://github.com/thoughtbot/shoulda-matchers.git",ref: "cc03053"
 end
+  gem 'therubyracer'
 
-group :production do
   gem 'unicorn'
-end
+
   gem 'simple_form'
 
   gem 'rb-readline','~>0.4.2'

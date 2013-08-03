@@ -106,7 +106,7 @@ class ProjectsController < ApplicationController
       end
     label_string
   end
-
+  
   def checklist_question_info_display(question)
     question_info_string = nil
     unless question.question_info.nil?
@@ -117,7 +117,7 @@ class ProjectsController < ApplicationController
 
   def response_count_for_question(project_num, question_num, response_value)
     ProjectChecklistResponse.response_project_question_count(project_num, question_num, response_value)
-    #ProjectChecklistResponse. where(project_id: project_num, question_id: question_num, responseValue: response_value).count
+    #ProjectChecklistResponse.cached_response_count_of_question_in_project(project_num, question_num, response_value)
   end
 
   def return_project_label_firebase(project)

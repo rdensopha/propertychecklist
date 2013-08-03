@@ -17,10 +17,10 @@ development:
  encoding: unicode
  database: propertychecklist_development
  pool: 5
- username: postgres
- password: root
+ username: propertychecklist
+ password: propertychecklist
  host: localhost
- port: 5433
+ port: 5432
 #=========================
 
 #development:
@@ -56,10 +56,10 @@ test:
   encoding: unicode
   database: propertychecklist_test
   pool: 5
-  username: postgres
-  password: root
+  username: propertychecklist
+  password: propertychecklist
   host: localhost
-  port: 5433
+  port: 5432
 
 production:
   adapter: postgresql

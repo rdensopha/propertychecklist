@@ -1,0 +1,40 @@
+
+  <p> 
+      <%= simple_format(checklist_question.questionContent, class: 'question') %>
+        <%  unless checklist_question.question_labels.first.nil?%>
+            <span class="label <%= return_question_label(checklist_question)%>">
+              <%= checklist_question.question_labels.first.name  %>
+            </span>
+        <% end %>
+
+  </p>
+ <% unless checklist_question.question_info.blank? %>
+    <div class="alert alert-error">
+      <%=  highlight(checklist_question.question_info,checklist_question.question_info_emphasis)%>
+    </div>
+ <% end %>
+ <% unless checklist_question.download_links.first.blank?%>
+    <a id="download_link" href="<%= checklist_question.download_links.first.url%>" target="_blank">
+     <%= highlight(checklist_question.download_links.first.name,checklist_question.download_links.first.name)%>
+    </a>
+ <% end %>
+
+  <%= form_tag('/project_checklist_responses', method: :post, remote: true) do %>
+   <%= hidden_field_tag 'project_id', @project.id %>
+   <%= hidden_field_tag 'question_id', checklist_question.id %>
+
+    <%@answers_labels.each do |answer_label| %>
+      <% if project_checklist_response_user_question(checklist_question.id) == @answers_labels.find_index(answer_label) %>
+            <label class="radio inline"><%= radio_button_tag return_answer_id(checklist_question.id), @answers_labels.find_index(answer_label), true %><%= answer_label %></label>
+      <% else %>
+            <label class="radio inline"><%= radio_button_tag return_answer_id(checklist_question.id), @answers_labels.find_index(answer_label) %><%= answer_label %></label>
+      <% end %>
+    <% end %>
+    <%= submit_tag 'Submit' %>
+  <% end %>
+         <a href="#" data-toggle="popover"    data-trigger="hover" data-content="Responses of members registered  for this project" data-original-title="A title">
+                <% (0..2).each do |response_code| %>
+                   <span style="font-size:20px;" class="text-error"><%= response_count_for_question(@project.id, checklist_question.id, response_code) %></span> said <%= @answers_labels[response_code] %>,&nbsp;
+                <% end %>
+         </a>
+        <hr>

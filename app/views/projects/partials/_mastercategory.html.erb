@@ -1,0 +1,7 @@
+
+<section id="<%= mastercategory.name%>">
+ <div class="page-header">
+  <h2 class="section_header"><%= mastercategory.name %></h2>
+   <%= render :partial => 'projects/partials/checklist_question',:collection => mastercategory.questions %>
+ </div>
+</section>
